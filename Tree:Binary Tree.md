@@ -125,6 +125,105 @@ Child를 몇개를 가지든 위와 같은 형태의 구조를 통해 형성된�
 
   이는 완전 이진트리이기도 하다. 포화 이진 트리는 반드시 완전 이진 트리이지만 완전 이진 트리가 반드시 포화 이진 트리는 아니다.   
 
+<br>
+
+* ② 트리 표현하는 방법   
+  
+트리를 구현하는 방법은 기본적으로 3가지 있다.   
+
+(1) 트리는 기본적으로 그래프 형태의 구조이다. 따라서 `그래프의 인접 리스트 방식으로 쉽게 표현이 가능`하다.   
+(2) `배열로 표현`하기 - 이 경우는 `완전 이진 트리만 가능`하다.   
+  - 루트 노드를 index 1로 표현하고 좌측 자식을 x2, 우측 자식을 x2 + 1의 index에 넣어서 저장하면 된다.   
+  - Heap, 세그먼트 트리 구현 시 많이 쓰인다.   
+(3) `별도의 class(구조화)로 구성`하는 방법이 있다.   
+
+<br>
+<br>
+<br>
+
+---
+
+## 3.이진 트리(Binary Tree) 구현하기   
+
+<br>
+
+① Node 클래스   
+- Node class는 LinkedList의 노드러첨 자체적으로 데이터 값을 저장하고 있으며 각 Parent/Child 노드에 대한 정보도 갖고 있어야 한다. 따라서 아래와 같이 구현될 수 있다.   
+
+    <br>
+
+    ```Java
+    class Node<T> {
+        T value;
+        Node left;
+        Node right;
+
+        public Node(T value) {
+            this.value = value;
+        }
+    }
+    ```
+
+    <br>
+
+② Binary Tree 클래스
+- Binary Tree 클래스는 전체 이진 트리에 대한 정보를 갖고 있는 클래스이다. 따라서, 현재 Root 노드가 무엇인지, 현재 저장된 노드의 수는 몇 개인지 등의 정보를 갖는다.   
+
+    <br>
+
+    ```Java
+    public class BinaryTree<T> {
+        Node<T> root = null;
+        int size = 0;
+
+        public BinaryTree(){};
+    }
+    ```
+
+<br>
+
+③ 데이터 노드 삽입하기
+- 데이터 삽입은 `최초에 Root가 비어 있다면 Root에 담고, 아니라면 Root의 Left부터 차곡차곡 데이터를 삽입`하는 방식으로 진행한다.   
+- 이 방식을 유지하려면 `레벨 순회`가 가능해야 한다. 순회란 Tree 구조에서 저장된 모든 데이터를 빼내는 방식에 대해 정의를 의미한다. 
+
+    <br>
+
+    ```Java
+    public boolean insert(T value) {
+        Node newNode = new Node(value);
+        if (size == 0) {
+            root = newNode;
+
+            return true;
+        }
+
+        Queue<Node<T>> q = new LinkedList<>();
+        q.add(root);
+
+        while (true) {
+            Node tmp = q.peek();
+            if (tmp.left == null) {
+                tmp.left = newNode;
+                newNode,parent = tmp;
+                
+                break;
+            } else {
+                q.add(tmp.left);
+            }
+
+            if (tmp.right == null) {
+                tmp.right = newNode;
+                newNode.parent = tmp;
+
+                break;
+            } else {
+                q.add(tmp.right);
+            }
+        }
+
+        return true;
+    }
+    ```
 
 
 
