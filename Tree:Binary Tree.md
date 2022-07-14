@@ -41,6 +41,22 @@ Tree 구조는 `비-선형(Non-Linear) 자료 구조`이다. 이러한 구조는
 
 <img src="img/img01.png" width=600, height=400>
 
+<br>
+
+위 그림은 대표적인 `Tree` 형태의 구조를 의미한다. 각각의 노드가 있고 이 노드들이 각각 2개의 노드와 연결되어 있다. 이러한 구조를 `이진 트리(Binary Tree)` 라고 한다.   
+
+|이름|설명|위 그림 기반 예시|
+|---|---|---|
+|Root|Tree 구조의 최상단 Node|Node1|
+|Edge|Node와 Node의 연결|화살표|
+|Parent|Leaf Node 제외한 모든 Node Edge로 연결된 Node를 하위에 보유한 모든 Node|Node1 ~ 3|
+|Child|Root Node를 제외한 모든 Node 즉, Parent를 갖는 Node|Node2 ~ 7|
+|Leaf|Tree의 구조에서 Child를 갖지 않는 모든 최하단 Node|Node4 ~ 7|
+|Heigth|전체 Tree 구조에서 가장 긴 경로|Root - Leaf 모든 경로가 2의 거리(경로)|
+|Depth|특정 Node에서 Root Node 까지의 경로(깊이)|Node3은 Root 까지 1의 Depth|
+|Sub Tree|Tree 구조 내에 있는 모든 부분적인 Tree|Node2와 그 아래는 전체 Tree의 Sub Tree|
+|Sibling|동일한 Parent/Level 갖는 관계인 Node|Node2, Node3은 Sibling|
+
 
 
 
