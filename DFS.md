@@ -148,10 +148,3 @@ public static void dfs_list(int vertexStartNumber, LinkedList<Integer>[] list, b
     }
 }
 ```
-
-<br>
-
-### DFS 인접 행렬로 구현
-
-<br>
-
