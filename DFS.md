@@ -140,5 +140,18 @@ public static void dfs_list(int vertexStartNumber, LinkedList<Integer>[] list, b
     System.out.println(vertextStartNumber + " ");  // 정점 출력
 
     Iterator<Integer> iterator = list[vertextStartNumber].listIterator();  // 정점 인접리스트 순회
+    while(iterater.hasNext()) {
+        int nextVertex = iterator.next();
+        if (!visited[nextVertex]) {  // 방문하지 않은 정점이라면
+            dfs_list(nextVertex, list, visited); // 다시 DFS 재귀 호출
+        }
+    }
 }
 ```
+
+<br>
+
+### DFS 인접 행렬로 구현
+
+<br>
+
